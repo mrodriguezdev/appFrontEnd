@@ -6,7 +6,8 @@ import { DomicilioI } from '../../models/domicilio.interface'
 import { DocumentosI } from '../../models/documentos.interface'
 import { ApiService } from '../../services/apiRest/api.service'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+
+import { AlertsService } from '../../services/alerts/alerts.service';
 
 @Component({
   selector: 'app-actualizar',
@@ -48,7 +49,7 @@ export class ActualizarComponent implements OnInit {
   });
 
   // Inyectando librerias a nuestro constructor y nuestro servicio
-  constructor(private router: Router, private activeRoute: ActivatedRoute, private apiService: ApiService, private toastr: ToastrService) { }
+  constructor(private router: Router, private activeRoute: ActivatedRoute, private apiService: ApiService, private toastr: AlertsService) { }
 
   ngOnInit(): void {
     // Obteniendo y asignando variable de nuestra id de cliente a actualizar
@@ -98,7 +99,7 @@ export class ActualizarComponent implements OnInit {
       console.log(data);
       this.bloquearCampo = false;
     }, error => console.log(error));
-    this.toastr.success("El cliente se actualizo correctamente!", "OK");
+    this.toastr.mostrarSuccess("El cliente se actualizo correctamente!", "OK");
 
   }
 
@@ -109,7 +110,7 @@ export class ActualizarComponent implements OnInit {
     this.apiService.actualizarDomicilio(form, id).subscribe(data => {
       console.log(data);
     }, error => console.log(error));
-    this.toastr.success("El domicilio se actualizo correctamente!", "OK");
+    this.toastr.mostrarSuccess("El domicilio se actualizo correctamente!", "OK");
 
   }
 
@@ -121,7 +122,7 @@ export class ActualizarComponent implements OnInit {
       console.log(data);
     }, error => console.log(error));
 
-    this.toastr.success("El documento se actualizo correctamente!", "OK");
+    this.toastr.mostrarSuccess("El documento se actualizo correctamente!", "OK");
   }
 
   // Metodo para eliminar cliente
@@ -132,7 +133,35 @@ export class ActualizarComponent implements OnInit {
     let datos: ClienteI = this.actualizarFormCli.value;
     this.apiService.eliminarCliente(id).subscribe(data => {
       console.log(data);
-    })
+    }, error => console.log(error));
+
+    this.toastr.mostrarSuccess("El cliente se elimino correctamente!", "OK");
+  }
+
+  // Metodo para eliminar el documento de un cliente
+  eliminarDocumento() {
+    let id: string = this.activeRoute.snapshot.paramMap.get('idcliente')!;
+    console.log(id);
+
+    let datos: DocumentosI = this.actualizarFormCli.value;
+    this.apiService.eliminarDocumento(id).subscribe(data => {
+      console.log(data);
+    }, error => console.log(error));
+
+    this.toastr.mostrarSuccess("El documento se elimino correctamente!", "OK");
+  }
+
+  // Metodo para eliminar un cliente
+  eliminarDomicilio() {
+    let id: string = this.activeRoute.snapshot.paramMap.get('idcliente')!;
+    console.log(id);
+
+    let datos: DomicilioI = this.actualizarFormDom.value;
+    this.apiService.eliminarDomicilio(id).subscribe(data => {
+      console.log(data);
+    }, error => console.log(error));
+
+    this.toastr.mostrarSuccess("El domicilio se elimino correctamente!", "OK");
   }
 
   // Metodo para regresar al listado de clientes

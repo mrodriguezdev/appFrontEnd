@@ -97,4 +97,18 @@ export class ApiService {
 
     return this.httpClient.delete(dir);
   }
+
+  // Metodo para eliminar el documento de un cliente
+  eliminarDocumento(idcliente: string) {
+    let dir = this.urlApi + 'eliminarDocumento/' + idcliente;
+
+    return this.httpClient.delete(dir);
+  }
+
+  // Metodo para eliminar un cliente
+  eliminarDomicilio(idcliente: string) {
+    let dir = this.urlApi + 'eliminarDomicilio/' + idcliente;
+
+    return this.httpClient.delete(dir);
+  }
 }

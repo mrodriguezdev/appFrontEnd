@@ -5,6 +5,7 @@ import { ApiService } from '../../services/apiRest/api.service'
 import { ClienteI } from '../../models/cliente.interface';
 import { DomicilioI } from '../../models/domicilio.interface'
 import { DocumentosI } from '../../models/documentos.interface'
+import { AlertsService } from '../../services/alerts/alerts.service';
 
 @Component({
   selector: 'app-nuevo',
@@ -42,36 +43,41 @@ export class NuevoComponent implements OnInit {
   });
 
   // Inyectando librerias a nuestro constructor y nuestro servicio
-  constructor(private router: Router, private activeRoute: ActivatedRoute, private apiService: ApiService) { }
+  constructor(private router: Router, private activeRoute: ActivatedRoute, private apiService: ApiService, private toastr: AlertsService) { }
 
   ngOnInit(): void {
   }
 
 
   // Metodo para registrar un nuevo cliente 
-  nuevoCliente(form:ClienteI){
+  nuevoCliente(form: ClienteI) {
 
-    this.apiService.registrarCliente(form).subscribe(data =>{
+    this.apiService.registrarCliente(form).subscribe(data => {
       console.log(data);
-    });
+    }, error => console.log(error));
+    this.toastr.mostrarSuccess("Se registro el cliente correctamente!", "OK");
   }
 
   // Metodo para agregar un domicilio a un cliente
-  nuevoDomicilio(form:DomicilioI){
-    this.apiService.registrarDomicilio(form).subscribe(data =>{
+  nuevoDomicilio(form: DomicilioI) {
+    this.apiService.registrarDomicilio(form).subscribe(data => {
       console.log(data);
-    });
+    }, error => console.log(error));
+
+    this.toastr.mostrarSuccess("Se registro el domicilio correctamente!", "OK");
   }
 
   // Metodo para agregar un documento a un cliente
-  nuevoDocumento(form:DocumentosI){
-    this.apiService.registrarDocumento(form).subscribe(data =>{
+  nuevoDocumento(form: DocumentosI) {
+    this.apiService.registrarDocumento(form).subscribe(data => {
       console.log(data);
-    });
+    }, error => console.log(error));
+
+    this.toastr.mostrarSuccess("Se registro el documento correctamente!", "OK");
   }
 
   // Metodo que devuelve el Id de cliente nuevo
-  maxId(){}
+  maxId() { }
 
   // Metodo para regresar al listado de clientes
   irAListado() {
