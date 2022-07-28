@@ -1,28 +1,36 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './templates/header/header.component';
 import { FooterComponent } from './templates/footer/footer.component';
-import { ActualizarComponent } from './views/actualizar/actualizar.component';
-import { DashboardComponent } from './views/dashboard/dashboard.component';
-import { LoginComponent } from './views/login/login.component';
-import { NuevoComponent } from './views/nuevo/nuevo.component';
+
+// Importando librerias a utilizar
+// Libreria para tener el control sobre los datos del formulario de login
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+// Libreria para acceder a los servicios
+import { HttpClientModule } from '@angular/common/http'
+
+// Importando librerias para los alerts
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ActualizarComponent,
-    DashboardComponent,
-    LoginComponent,
-    NuevoComponent
+    routingComponents
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, 
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

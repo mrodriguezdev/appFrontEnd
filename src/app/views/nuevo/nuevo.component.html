@@ -1,1 +1,103 @@
-<p>nuevo works!</p>
+<app-header></app-header>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Informacion de cliente</h2><br>
+            <form [formGroup]="nuevoFormCli" (ngSubmit)="nuevoCliente(nuevoFormCli.value)">
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Nombre </label>
+                    <input type="text" class="form-control" placeholder="Nombre del cliente" formControlName="NOMBRE">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Apellido </label>
+                    <input type="text" class="form-control" placeholder="Apellido del cliente"
+                        formControlName="APELLIDO">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Razon social </label>
+                    <input type="text" class="form-control" placeholder="Razon social" formControlName="RAZSOC">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Telefono </label>
+                    <input type="text" class="form-control" placeholder="Telefono" formControlName="TELEFONO">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Fecha de registro </label>
+                    <input type="date" class="form-control" placeholder="Fecha de registro"
+                        formControlName="FECH_REGISTRO">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Fecha de modificacion </label>
+                    <input type="date" class="form-control" placeholder="Fecha de modificacion"
+                        formControlName="FECH_MODI">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Id usuario registra </label>
+                    <input type="text" class="form-control" placeholder="Id usuario registra"
+                        formControlName="IDUSUARIO">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-6">
+            <h2>Domicilios de cliente</h2><br>
+            <form [formGroup]="nuevoFormDom" (ngSubmit)="nuevoDomicilio(nuevoFormDom.value )">
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Direccion </label>
+                    <input type="text" class="form-control" placeholder="Direccion" formControlName="DIRECCION">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Departamento </label>
+                    <input type="text" class="form-control" placeholder="Departamento" formControlName="DEPARTAMENTO">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Municipio </label>
+                    <input type="text" class="form-control" placeholder="Municipio" formControlName="MUNICIPIO">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Id cliente </label>
+                    <input type="text" class="form-control" placeholder="Id cliente" formControlName="IDCLIENTE">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+        <div class="col-6">
+            <h2>Documentos de cliente</h2><br>
+            <form [formGroup]="nuevoFormDoc" (ngSubmit)="nuevoDocumento(nuevoFormDoc.value)">
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Tipo de documento </label>
+                    <input type="text" class="form-control" placeholder="Tipo de documento" formControlName="TIPDOCU">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Numero de documento </label>
+                    <input type="text" class="form-control" placeholder="Numero de documento" formControlName="NODOCU">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Id cliente </label>
+                    <input type="text" class="form-control" placeholder="Id cliente" formControlName="IDCLIENTE">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <button type="button" class="btn btn-dark" (click)="irAListado()">Ir a listado</button>
+</div>
+
+<br>
+<br><br>
+<br><br>
+<br>
+<app-footer></app-footer>

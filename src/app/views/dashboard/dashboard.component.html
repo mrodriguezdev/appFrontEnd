@@ -1,1 +1,42 @@
-<p>dashboard works!</p>
+<app-header></app-header>
+
+<div class="container">
+
+  <h3>Listado de clientes</h3><br>
+
+  <button type="button" class="btn btn-primary" (click)="registrarCliente()">Ingresar nuevo cliente</button>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id cliente</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Razon Social</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Numero de documento</th>
+        <th scope="col">Tipo de documento</th>
+        <th scope="col">Direccion</th>
+        <th scope="col">Departamento</th>
+        <th scope="col">Municipio</th>
+        <th scope="col">Fecha de registro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes" (click)="actualizarCliente(cliente.IDCLIENTE)">
+        <td>{{cliente.IDCLIENTE}}</td>
+        <td>{{cliente.NOMBRE}}</td>
+        <td>{{cliente.APELLIDO}}</td>
+        <td>{{cliente.RAZSOC}}</td>
+        <td>{{cliente.TELEFONO}}</td>
+        <td>{{cliente.NODOCU}}</td>
+        <td>{{cliente.TIPDOCU}}</td>
+        <td>{{cliente.DIRECCION}}</td>
+        <td>{{cliente.DEPARTAMENTO}}</td>
+        <td>{{cliente.MUNICIPIO}}</td>
+        <td>{{cliente.FECH_REGISTRO}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-footer></app-footer>
